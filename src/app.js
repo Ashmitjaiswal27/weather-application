@@ -11,6 +11,8 @@ const { error } = require('console')
 
 const app = express() // App creation
 
+const port = process.env.PORT || 3000
+
 //Serving up a directory
 const publicDirectoryPath = path.join(__dirname, '../public')
 app.use(express.static(publicDirectoryPath))
@@ -126,6 +128,6 @@ app.get('*',(req,res)=> {
     })
 })
 
-app.listen(3000,()=>{
-    console.log('Server is up on port 3000!')
+app.listen(port,()=>{
+    console.log('Server is up on port '+port+'!')
 })
