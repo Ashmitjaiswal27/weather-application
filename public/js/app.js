@@ -1,4 +1,4 @@
-console.log('Client side js file is loaded')
+// console.log('Client side js file is loaded')
 
 const url = 'http://localhost:3000/weather?address='
 
