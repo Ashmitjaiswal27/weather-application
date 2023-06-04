@@ -3,7 +3,7 @@ const request = require('request')
 const forecast = (latitude,longitude,callback)=>{
     const url = 'http://api.weatherstack.com/current?access_key=e67594a278f28c82235efd4f1f2d7400&query='+latitude+','+longitude+'&units=m'
 
-    request({url:url, json:true},(error,response)=>{  //request({url, json:true},(error,{body}={})=>{
+    request({url:url, json:true},(error,response)=>{  //request({url, json:true},(error,{body})=>{
         if(error){
             callback('Unable to connect to weather services!', undefined)
         }
@@ -11,7 +11,7 @@ const forecast = (latitude,longitude,callback)=>{
             callback('Unable to find location!',undefined)
         }
         else{
-            callback(undefined,response.body.current.weather_descriptions[0]+'. It is currently '+response.body.current.temperature+' degress out. It feels like '+response.body.current.feelslike+' degrees!')
+            callback(undefined,response.body.current.weather_descriptions[0]+'. It is currently '+response.body.current.temperature+' degress out. It feels like '+response.body.current.feelslike+' degrees. The humidity is '+ response.body.current.humidity +'%.')
         }                      //body.current.weather_descriptions[0]                                 //body.current.temperature                                        //body.current.feelslike                          
     })
 }
